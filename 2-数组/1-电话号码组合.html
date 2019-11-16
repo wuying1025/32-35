@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function fn(s){
+        let arr = ["","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"];
+        let num = s.split("");
+        let code = [];
+        num.forEach((item)=>{
+            code.push(arr[item]);
+        })
+        return comb(code);
+    }
+
+    function comb(arr){//["abc","def"]
+        let temp = [];
+        for(let i=0;i<arr[0].length;i++){
+            for(let j=0;j<arr[1].length;j++){
+                temp.push(`${arr[0][i]}${arr[1][j]}`);
+            }
+        }
+        arr.splice(0,2,temp);
+        if(arr.length>1){
+            comb(arr);
+        }
+        return arr[0];
+    }
+    //[["ad", "ae", "af"],"ghi"]
+    //["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+    //splice(2,4,[1,2,3])   [1,2,4].length = 2;
+
+    //["g","h","i"]
+    //["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+
+    console.log(fn("234"));
+
+</script>
+</body>
+</html>
