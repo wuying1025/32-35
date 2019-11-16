@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let str = "Let's take LeetCode contest";
+
+    function fn(s){
+//        let words = s.split(" ");
+//        let arr = words.map((item)=>{
+//            return item.split("").reverse().join("");
+//        });
+//
+//        return arr.join(" ");
+
+//        return s.split(" ").map((item)=>{
+//            return item.split("").reverse().join("");
+//        }).join(" ");
+
+          return s.match(/[\w']+/g).map((item)=>{
+            return item.split("").reverse().join("");
+          }).join(" ");
+    }
+
+    console.log(fn(str));
+
+</script>
+</body>
+</html>
