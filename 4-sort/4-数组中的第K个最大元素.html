@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn(arr,k){
+        //第一种
+//        arr.sort((a,b)=>{return a-b});
+//        return arr[arr.length-k];
+        //第二种
+        for(let i=arr.length-1;i>arr.length-k-1;i--){
+            for(let j=0;j<i;j++){
+                if(arr[j] > arr[j+1]){
+                    let temp = arr[j+1];
+                    arr[j+1]=arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr[arr.length-k];
+    }
+    console.log(fn([3,2,3,1,2,4,5,5,6],4));
+
+</script>
+</body>
+</html>
