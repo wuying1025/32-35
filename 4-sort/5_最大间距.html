@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function fn(arr){
+        //第一种
+//        arr.sort((a,b)=>a-b);
+//        let max = arr[1]-arr[0];
+//        for(let i=1;i<arr.length-1;i++){
+//            if(arr[i+1]-arr[i]>max){
+//                max = arr[i+1]-arr[i];
+//            }
+//        }
+//        return max;
+        let max = 0;
+        for(let i=arr.length-1;i>0;i--){
+            for(let j=0;j<i;j++){
+                if(arr[j] > arr[j+1]){
+                    let temp = arr[j+1];
+                    arr[j+1]=arr[j];
+                    arr[j] = temp;
+                }
+            }
+            if(i<arr.length-1){
+                if(arr[i+1]-arr[i]>max){
+                    max = arr[i+1]-arr[i];
+                }
+            }
+        }
+
+        return max;
+    }
+    console.log(fn([3,6,9,1]));
+
+    //2,5,1,4,53,21,75,   23,    12
+</script>
+</body>
+</html>
