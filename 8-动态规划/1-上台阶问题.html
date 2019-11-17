@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 一共有n阶台阶  每次可以上1阶或者2阶。
+    //问一共有多少种走法
+//    function fn(n){
+//        if(n==1){
+//          return 1;
+//        }
+//        if(n==2){
+//            return 2;
+//        }
+//        return fn(n-1)+fn(n-2);
+//    }
+
+
+    function fn(n){
+        let n1 = 1,n2 = 2;
+        if(n==1){
+          return 1;
+        }
+        if(n==2){
+            return 2;
+        }
+        for(let i=2;i<n;i++){
+            let temp = n1 + n2;
+            n1 = n2;
+            n2 = temp;
+        }
+        return n2;
+    }
+
+    //1 2 3 5 8 13
+    console.log(fn(10));
+
+</script>
+</body>
+</html>
