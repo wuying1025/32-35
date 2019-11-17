@@ -7,7 +7,7 @@
 <body>
 <script>
 
-    class MyCircularQueue{
+    class MycircularQueue{
         constructor(k){
             this.list = new Array(k);
             this.front = 0;
@@ -18,28 +18,49 @@
             if(this.isFull()){
                 return false;
             }
-            this.list.push(value);
+            this.list[this.rear]=value;
             this.rear = (this.rear+1) % this.max;
             return true;
-
         }
         deQueue(){
             if(this.isEmpty()){
                 return false;
             }
-            this.list.shift();
+            this.list.splice(this.front,1,undefined);
             this.front = (this.front+1) % this.max;
             return true;
         }
+        Front(){
+            if(this.isEmpty()){
+                return -1;
+            }
+            return this.list[this.front];
+        }
+        Rear(){
+            if(this.isEmpty()){
+                return -1;
+            }
+            return this.rear>0?this.list[this.rear-1]:this.list[this.max-1];
+        }
         isEmpty(){
-
-            return false;
+            return this.front===this.rear && !this.list[this.front];
         }
         isFull(){
-            return false;
+            return this.front===this.rear && !!this.list[this.front];
         }
-
     }
+
+    let circularQueue = new MycircularQueue(3); // 设置长度为 3
+    console.log(circularQueue.enQueue(1));  // 返回 true
+    console.log(circularQueue.enQueue(2));  // 返回 true
+    console.log(circularQueue.enQueue(3));  // 返回 true
+    console.log(circularQueue.enQueue(4));  // 返回 false，队列已满
+    console.log(circularQueue.Rear());  // 返回 3
+    console.log(circularQueue.isFull());  // 返回 true
+    console.log(circularQueue.deQueue());  // 返回 true
+    console.log(circularQueue.enQueue(4));  // 返回 true
+    console.log(circularQueue.Rear());  // 返回 4
+
 
 
 </script>
