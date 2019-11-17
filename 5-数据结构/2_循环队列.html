@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    class MyCircularQueue{
+        constructor(k){
+            this.list = new Array(k);
+            this.front = 0;
+            this.rear = 0;
+            this.max = k;//队列的最大长度
+        }
+        enQueue(value){
+            if(this.isFull()){
+                return false;
+            }
+            this.list.push(value);
+            this.rear = (this.rear+1) % this.max;
+            return true;
+
+        }
+        deQueue(){
+            if(this.isEmpty()){
+                return false;
+            }
+            this.list.shift();
+            this.front = (this.front+1) % this.max;
+            return true;
+        }
+        isEmpty(){
+
+            return false;
+        }
+        isFull(){
+            return false;
+        }
+
+    }
+
+
+</script>
+</body>
+</html>
