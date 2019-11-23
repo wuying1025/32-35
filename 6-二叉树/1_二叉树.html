@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Node{
+        constructor(val){
+            this.key = val;
+            this.left = undefined;
+            this.right = undefined;
+        }
+    }
+
+    class BinaryTree{
+        constructor(arr){
+            this.root = new Node(arr[0]);
+            for(let i=1;i<arr.length;i++){
+                this.insert(this.root,new Node(arr[i]));
+            }
+            return this.root;
+        }
+        insert(node,newNode){
+            if(node.key > newNode.key){
+                if(node.left === undefined){
+                    node.left = newNode;
+                }else{
+                    this.insert(node.left,newNode);
+                }
+            }else{
+                if(node.right === undefined){
+                    node.right = newNode;
+                }else{
+                    this.insert(node.right,newNode);
+                }
+            }
+        }
+    }
+
+    function max(root){
+        if(root){
+            while(root && root.right){
+                root = root.right;
+            }
+            return root.key;
+        }
+        return null;
+    }
+
+    function min(root){
+        if(root){
+            while(root && root.left){
+                root = root.left;
+            }
+            return root.key;
+        }
+        return null;
+    }
+    //前序遍历 （中左右）
+    function front(root){
+        if(root){
+            console.log(root.key);
+            if(root.left){
+                front(root.left);
+            }
+            if(root.right){
+                front(root.right);
+            }
+        }
+        return null;
+    }
+    //中序遍历 （左中右）
+    function middle(root){
+        if(root){
+            if(root.left){
+                middle(root.left);
+            }
+            console.log(root.key);
+            if(root.right){
+                middle(root.right);
+            }
+        }
+        return null;
+    }
+    //后序遍历 （左右中）
+    function rear(root){
+        if(root){
+            if(root.left){
+                rear(root.left);
+            }
+            if(root.right){
+                rear(root.right);
+            }
+            console.log(root.key);
+        }
+        return null;
+    }
+    let root = new BinaryTree([4,6,2,7,9,15]);
+    console.log(max(root));
+    console.log(min(root));
+    middle(root);
+    front(root);
+    rear(root);
+
+</script>
+</body>
+</html>
