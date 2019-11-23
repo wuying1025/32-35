@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn(arr) {
+        let res = 0;
+        for(let i=0;i<arr.length-1;i++){//i位置买入
+            for(let j=i;j<arr.length-1;j++){//卖出位置
+                if(arr[j+1] < arr[j]){
+                    //卖出
+                    i=j;
+                }else{
+                    res += arr[j+1]-arr[j];
+                    i=j;
+                }
+            }
+        }
+        return res;
+    }
+    console.log(fn([7,1,5,3,6,4]));
+    console.log(fn([1,2,3,4,5]));
+    console.log(fn([7,6,4,3,1]));
+</script>
+</body>
+</html>

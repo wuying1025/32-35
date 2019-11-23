@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn(arr){
+        if(arr[0] != 5){
+            return false;
+        }
+        let box = [];
+        for(let i=0;i<arr.length;i++){
+            if(arr[i] == 5){
+                box.push(arr[i]);
+            }else{
+                let zl = arr[i] - 5;//需要找零
+                box.sort((a,b)=>b-a);
+                for(let j=0;j<box.length;j++){
+                    if(box[j] <= zl){
+                        zl -= box[j];
+                        box.splice(j,1);
+                        if(zl == 0){
+                            box.push(arr[j]);
+                            break;
+                        }
+                        j--;
+                    }
+                }
+                if(zl != 0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }   1
+    console.log(fn([5,5,5,10,20]));
+    console.log(fn([5,5,10]));
+    console.log(fn([10,10]));
+    console.log(fn([5,5,10,10,20]));
+
+</script>
+</body>
+</html>
